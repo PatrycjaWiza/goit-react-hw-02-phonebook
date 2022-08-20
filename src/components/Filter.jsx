@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { Input } from './Styles';
 
 export class Filter extends Component {
   render() {
@@ -6,12 +7,12 @@ export class Filter extends Component {
     return (
       <>
         <p>Find contacts by name</p>
-        <input
+        <Input
           type="text"
           name="filter"
           value={value}
           onChange={filterByName}
-        ></input>
+        ></Input>
       </>
     );
   }

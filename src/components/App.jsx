@@ -38,9 +38,14 @@ export class App extends Component {
     if (nameArray.includes(values.name)) {
       return alert(`${values.name} is already in contacts.`);
     }
-
     return this.setState(({ contacts }) => ({
       contacts: [values, ...contacts],
+    }));
+  };
+
+  toDelete = id => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
     }));
   };
 
@@ -52,7 +57,7 @@ export class App extends Component {
         <PhoneBookForm onSubmit={this.contactSubmit} />
         <Title>Contacts</Title>
         <Filter value={filter} filterByName={this.handleChange} />
-        <Contacts filterByName={this.filterByName} />
+        <Contacts filterByName={this.filterByName} toDelete={this.toDelete} />
       </div>
     );
   }
