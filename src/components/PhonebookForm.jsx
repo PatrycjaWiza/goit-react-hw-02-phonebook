@@ -18,7 +18,7 @@ export class PhoneBookForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const contact = {
-      id: this.ContactInputId,
+      id: nanoid(),
       name: this.state.name,
       number: this.state.number,
     };

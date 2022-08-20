@@ -31,16 +31,24 @@ export class App extends Component {
   };
 
   contactSubmit = values => {
-    console.log(this.state.contacts);
     const { contacts } = this.state;
-    return contacts.push(values);
+    const nameArray = contacts.map(contact => {
+      return contact.name;
+    });
+    if (nameArray.includes(values.name)) {
+      return alert(`${values.name} is already in contacts.`);
+    }
+
+    return this.setState(({ contacts }) => ({
+      contacts: [values, ...contacts],
+    }));
   };
 
   render() {
     const { filter } = this.state;
     return (
       <div>
-        <Title>Phonebook</Title>
+        <h1>Phonebook</h1>
         <PhoneBookForm onSubmit={this.contactSubmit} />
         <Title>Contacts</Title>
         <Filter value={filter} filterByName={this.handleChange} />
