@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { Label, Form } from './Styles';
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 
 export class PhoneBookForm extends Component {
   state = {
@@ -67,3 +68,7 @@ export class PhoneBookForm extends Component {
     );
   }
 }
+
+PhoneBookForm.propTypes = {
+  onSubmit: PropTypes.func,
+};

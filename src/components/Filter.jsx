@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { Input } from './Styles';
+import PropTypes from 'prop-types';
 
 export class Filter extends Component {
   render() {
@@ -17,3 +18,8 @@ export class Filter extends Component {
     );
   }
 }
+
+Filter.propTypes = {
+  filterByName: PropTypes.func,
+  value: PropTypes.string,
+};
