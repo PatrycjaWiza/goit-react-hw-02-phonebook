@@ -2,12 +2,16 @@ import { Component } from 'react';
 
 export class Contacts extends Component {
   render() {
-    const { contact } = this.props;
+    const { filterByName } = this.props;
 
     return (
-      <>
-        <li>{contact}</li>
-      </>
+      <ul>
+        {filterByName().map(({ name, number, id }) => (
+          <li key={id}>
+            {name}: {number}
+          </li>
+        ))}
+      </ul>
     );
   }
 }
