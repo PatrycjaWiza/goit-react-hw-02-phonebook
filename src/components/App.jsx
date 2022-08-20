@@ -1,16 +1,21 @@
+import { PhonebookForm } from './PhonebookForm';
+
 export const App = () => {
   return (
     <div
       style={{
         height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        margin: '0 20px',
         fontSize: 40,
-        color: '#010101'
+        color: '#010101',
       }}
     >
-      React homework template
+      <PhonebookForm
+        onSubmit={values => {
+          console.log(values.contacts);
+          values.contacts.push(values.name);
+        }}
+      />
     </div>
   );
 };
