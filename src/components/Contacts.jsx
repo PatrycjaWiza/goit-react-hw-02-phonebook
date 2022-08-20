@@ -5,9 +5,9 @@ export class Contacts extends Component {
     const { contact } = this.props;
 
     return (
-      <ul>
+      <>
         <li>{contact}</li>
-      </ul>
+      </>
     );
   }
 }

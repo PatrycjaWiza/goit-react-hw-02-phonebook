@@ -17,6 +17,7 @@ export const Form = styled.form`
     padding: 10px 20px;
     transition: background-color 500ms;
     border-radius: 5px;
+    color: #4e5a65;
 
     &:hover {
       cursor: pointer;
@@ -28,7 +29,7 @@ export const Form = styled.form`
   & input {
     margin: 10px 0;
     border-radius: 3px;
-    border: 1px solid;
+    border: 1px solid #4e5a65;
     padding: 10px;
 
   &:focus{
@@ -36,5 +37,12 @@ export const Form = styled.form`
     outline: red;
     box-shadow: 0 0 5px 4px rgba(118, 118, 255, .5);
   }
+`;
+export const Title = styled.h2`
+  margin: 10px auto;
 
+  & ~ ul {
+    margin: 0 20px 0;
+    font-size: 30px;
+  }
 `;

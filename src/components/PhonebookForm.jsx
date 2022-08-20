@@ -4,16 +4,22 @@ import { Section } from './Section';
 import { Contacts } from './Contacts';
 import { nanoid } from 'nanoid';
 
+const INITIAL_STATE = {
+  contacts: [],
+  name: '',
+  number: '',
+};
+
 export class PhonebookForm extends Component {
   state = {
-    contacts: [],
-    name: '',
+    ...INITIAL_STATE,
   };
 
   ContactInputId = nanoid();
 
   handleChange = e => {
-    this.setState({ name: e.target.value });
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
   };
 
   handleSubmit = e => {
@@ -25,11 +31,11 @@ export class PhonebookForm extends Component {
   };
 
   reset = () => {
-    this.setState({ name: '' });
+    this.setState({ ...INITIAL_STATE });
   };
 
   render() {
-    const { name, contacts } = this.state;
+    const { name, contacts, number } = this.state;
     return (
       <>
         <Section title="Phonebook"></Section>
@@ -46,13 +52,26 @@ export class PhonebookForm extends Component {
             required
           />
 
+          <Label htmlFor={this.ContactInputId}>Number</Label>
+          <input
+            type="tel"
+            name="number"
+            value={number}
+            onChange={this.handleChange}
+            id={this.ContactInputId}
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+          />
           <button type="submit">Add contact</button>
         </Form>
 
         <Section title="Contacts">
-          {contacts.map((contact, id) => (
-            <Contacts key={id} contact={contact} />
-          ))}
+          <ul>
+            {contacts.map((contact, id) => (
+              <Contacts key={id} contact={contact} />
+            ))}
+          </ul>
         </Section>
       </>
     );
